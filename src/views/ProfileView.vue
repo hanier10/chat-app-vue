@@ -1,10 +1,14 @@
 <script>
+import { mapState, mapMutations } from 'vuex'
 import store from '@/store/store.js'
 export default {
-  data() {
-    return {
-      store
-    }
+  computed: {
+    ...mapState({
+      username: (state) => state.username
+    })
+  },
+  methods: {
+    ...mapMutations(['updateUsername'])
   }
 }
 </script>
@@ -14,8 +18,12 @@ export default {
     <div class="box">
       <img src="/avatars/avatar.jpeg" alt="avatar" />
       <label for="username">Nombre de usuario</label>
-      <input type="text" placeholder="Hanier Morales" :value="store.username" @input="store.updateUsername($event.target.value)"/>
-      <button>Acceder</button>
+      <input 
+      type="text" 
+      placeholder="Hanier Morales" 
+      :value="username"
+      @input="updateUsername($event.target.value)"/>
+      <button @click="$router.push('/')">Acceder</button>
     </div>
   </div>
 </template>
