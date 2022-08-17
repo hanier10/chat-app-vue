@@ -4,9 +4,9 @@ import store from '@/store/store.js'
 export default {
   computed: {
     ...mapState({
-      username: (state) => state.username
+      username: (state) => state.profile.username
     })
-  },
+  }, 
   methods: {
     ...mapActions(['updateUsername'])
   }
