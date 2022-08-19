@@ -1,18 +1,19 @@
 import { createStore } from 'vuex'
 import profile from '@/store/modules/profile'
-import { COMMIT_UPDATE_USERNAME } from '@/common/mutation-types.js'
-import { getUser } from '@/api'
+import { COMMIT_SET_STATUS } from '../common/mutation-types.js'
 
 const store = createStore({
   state() {
-    return {}
-  },
-  getters: {
-    firstName: (state, getters, rootState) => (c) => {
-      return rootState.profile.username.split('').join(c)
+    return {
+      status: null
     }
   },
-  mutations: {},
+  getters: {},
+  mutations: {
+    [COMMIT_SET_STATUS](state, value) {
+      state.status =  value
+    }
+  },
   actions: {},
   modules: {
     profile
